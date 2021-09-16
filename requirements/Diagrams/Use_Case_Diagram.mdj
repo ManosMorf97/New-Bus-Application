@@ -1167,11 +1167,11 @@
 												"$ref": "AAAAAAF77jQdz/UPxyM="
 											},
 											"font": "Arial;13;1",
-											"left": 495.5,
+											"left": 515,
 											"top": 238,
-											"width": 271,
+											"width": 366,
 											"height": 13,
-											"text": "Προβολή στοιχείων λεωφορειακής γραμμής"
+											"text": "Aναζήτηση και Προβολή στοιχείων λεωφορειακής γραμμής"
 										},
 										{
 											"_type": "LabelView",
@@ -1202,9 +1202,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 490.5,
+									"left": 510,
 									"top": 231,
-									"width": 281.87646484375,
+									"width": 376.3232421875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF77jQdz/UQ46g="
@@ -1304,7 +1304,7 @@
 							"containerChangeable": true,
 							"left": 432,
 							"top": 200,
-							"width": 398,
+							"width": 532,
 							"height": 88,
 							"nameCompartment": {
 								"$ref": "AAAAAAF77jQdz/UPxyM="
@@ -1348,8 +1348,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 297,
-									"top": 372,
+									"left": 298,
+									"top": 371,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -1369,8 +1369,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 291,
-									"top": 358,
+									"left": 293,
+									"top": 357,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -1390,8 +1390,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 310,
-									"top": 399,
+									"left": 309,
+									"top": 400,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -1474,8 +1474,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 502,
-									"top": 279,
+									"left": 548,
+									"top": 277,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -1494,8 +1494,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 494,
-									"top": 268,
+									"left": 541,
+									"top": 265,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -1514,8 +1514,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 517,
-									"top": 302,
+									"left": 562,
+									"top": 301,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -1560,7 +1560,7 @@
 								"$ref": "AAAAAAF77i6CTfHbkTY="
 							},
 							"lineStyle": 1,
-							"points": "225:424;304:392;532:288",
+							"points": "225:424;304:392;578:288",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF77jeeW/v7HrM="
@@ -2087,11 +2087,11 @@
 												"$ref": "AAAAAAF77jojqP+qAqg="
 											},
 											"font": "Arial;13;1",
-											"left": 450,
+											"left": 474.5,
 											"top": 462,
-											"width": 398,
+											"width": 516,
 											"height": 13,
-											"text": "Εμφάνιση λεωφορειακών γραμμών που περνάνε από μια στάση"
+											"text": "Αναζήτηση στάσης και Εμφάνιση λεωφορειακών γραμμών που περνάνε από αυτήν"
 										},
 										{
 											"_type": "LabelView",
@@ -2122,9 +2122,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 445,
+									"left": 469.5,
 									"top": 455,
-									"width": 409.21044921875,
+									"width": 526.90869140625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF77jojqP+r2F4="
@@ -2224,7 +2224,7 @@
 							"containerChangeable": true,
 							"left": 360,
 							"top": 432,
-							"width": 578,
+							"width": 745,
 							"height": 72,
 							"nameCompartment": {
 								"$ref": "AAAAAAF77jojqP+qAqg="
@@ -2395,7 +2395,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 333,
-									"top": 438,
+									"top": 437,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -2415,7 +2415,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 331,
-									"top": 425,
+									"top": 424,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -2435,7 +2435,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 337,
-									"top": 466,
+									"top": 465,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -2480,7 +2480,7 @@
 								"$ref": "AAAAAAF77i6CTfHbkTY="
 							},
 							"lineStyle": 1,
-							"points": "225:457;359:460",
+							"points": "225:457;359:459",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF77jtSFAdo00c="
@@ -3164,7 +3164,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Προβολή στοιχείων λεωφορειακής γραμμής"
+					"name": "Aναζήτηση και Προβολή στοιχείων λεωφορειακής γραμμής"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -3180,7 +3180,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Εμφάνιση λεωφορειακών γραμμών που περνάνε από μια στάση"
+					"name": "Αναζήτηση στάσης και Εμφάνιση λεωφορειακών γραμμών που περνάνε από αυτήν"
 				},
 				{
 					"_type": "UMLUseCase",
