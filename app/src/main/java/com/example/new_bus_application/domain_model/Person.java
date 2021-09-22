@@ -136,7 +136,7 @@ public class Person {
     public static boolean checkRoutes(String Start, String End) {
         for (int ammount = 0; ammount < BusDAOAndroid.getBuses().size(); ammount++) {
             message[0] = "";
-            if (findRoute(Start, End, new ArrayList<Route>(), new ArrayList<Station>(), message, ammount))
+            if (findRoute(Start, End, new ArrayList<Route>(), new ArrayList<Station>(), message, ammount+1))
                 return true;
         }
         message[0]="There are no buses";
