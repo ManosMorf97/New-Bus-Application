@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Person {
-    private static String message;
+    private static String[] message = new String[1];
     private static Station chosen_station;
     private static Route chosen_route;
     private static Bus chosen_bus;
 
     public static String getMessage() {
-        return message;
+        return message[0];
     }
 
     public static Station getChosen_station() {
@@ -30,7 +30,7 @@ public class Person {
     }
 
     public static void setMessage(String message) {
-        Person.message = message;
+        Person.message[0] = message;
     }
 
     public static void setChosen_station(Station chosen_station) {
@@ -43,6 +43,16 @@ public class Person {
 
     public static void setChosen_bus(Bus chosen_bus) {
         Person.chosen_bus = chosen_bus;
+    }
+
+    public static void connect(Bus bus, Route route) {
+        bus.addRoute(route);
+        route.setBus(bus);
+    }
+
+    public static void connect(Route route, Station station) {
+        route.addStation(station);
+        station.addRoute(route);
     }
 
     public static ArrayList<Station> getStations(String bus_name) {
@@ -66,19 +76,19 @@ public class Person {
         return buses;
     }
 
-    public static ArrayList<Station> getNearestStations(double longitude,double latitude){
-        ArrayList<Station> nearestStations=new ArrayList<>(3);
-        ArrayList<Station> stations=StationDAOAndroid.ListStations();
-        for(int i=0; i<3; i++){
-            int nearestStation_index=0;
-            double distance=Math.sqrt(Math.pow(stations.get(0).getLongitude()-longitude,2)+
-                    Math.pow(stations.get(0).getLatitude()-latitude,2));
-            for(int j=1; j<stations.size(); j++){
-                double next_distance=Math.sqrt(Math.pow(stations.get(j).getLongitude()-longitude,2)+
-                        Math.pow(stations.get(j).getLatitude()-latitude,2));
-                if(!nearestStations.contains(stations.get(j))&&distance>next_distance){
-                    distance=next_distance;
-                    nearestStation_index=j;
+    public static ArrayList<Station> getNearestStations(double longitude, double latitude) {
+        ArrayList<Station> nearestStations = new ArrayList<>(3);
+        ArrayList<Station> stations = StationDAOAndroid.ListStations();
+        for (int i = 0; i < 3; i++) {
+            int nearestStation_index = 0;
+            double distance = Math.sqrt(Math.pow(stations.get(0).getLongitude() - longitude, 2) +
+                    Math.pow(stations.get(0).getLatitude() - latitude, 2));
+            for (int j = 1; j < stations.size(); j++) {
+                double next_distance = Math.sqrt(Math.pow(stations.get(j).getLongitude() - longitude, 2) +
+                        Math.pow(stations.get(j).getLatitude() - latitude, 2));
+                if (!nearestStations.contains(stations.get(j)) && distance > next_distance) {
+                    distance = next_distance;
+                    nearestStation_index = j;
                 }
             }
             nearestStations.add(stations.get(nearestStation_index));
@@ -86,61 +96,67 @@ public class Person {
         return nearestStations;
     }
 
-    public static boolean findRoute(String Start,String End,ArrayList<Route> t_routes,ArrayList<Station> t_stations,
-                                    String message_,int ammount){
-        ArrayList<Route> Start_routes=new ArrayList<>();
-        Station Start_station=StationDAOAndroid.getStations().get(Start);
-        ArrayList<Route> End_routes=new ArrayList<>();
-        Station End_station=StationDAOAndroid.getStations().get(End);
+    public static boolean findRoute(String Start, String End, ArrayList<Route> t_routes, ArrayList<Station> t_stations,
+                                    String[] message_, int ammount) {
+        ArrayList<Route> Start_routes = new ArrayList<>();
+        Station Start_station = StationDAOAndroid.getStations().get(Start);
+        ArrayList<Route> End_routes = new ArrayList<>();
+        Station End_station = StationDAOAndroid.getStations().get(End);
         Start_routes.addAll(Start_station.getRoutes());
         End_routes.addAll(End_station.getRoutes());
-        for(Route route:subRoutes(Start_routes,End_routes)){
-            if(End_routes.contains(route)){
-                message_+="Go to The bus: "+route.getBus().getName()+" with route: "+route.getName()
-                        +" embark at station:"+Start+" and disembark at station: "+End+"\n";
+        for (Route route : subRoutes(Start_routes, End_routes)) {
+            if (End_routes.contains(route)) {
+                message_[0] += "Go to The bus: " + route.getBus().getName() + " with route: " + route.getName()
+                        + " embark at station:" + Start + " and disembark at station: " + End + "\n";
                 return true;
             }
         }
-        if(ammount<=1) return false;
+        if (ammount <= 1) return false;
         t_stations.add(Start_station);
-            for(Route route: subRoutes(Start_routes,t_routes)){
-                for(Station station: subStation(route.getStations(),t_stations)){
-                    ArrayList<Station> parameter_t_stations=new ArrayList<>();
-                    parameter_t_stations.addAll(t_stations);
-                    if(findRoute(station.getName(),End,addRoute(t_routes,route),parameter_t_stations,
-                            message_+"Go to The bus: "+route.getBus().getName()+" with route: "+route.getName() +
-                                    " embark at station:"+Start+" and disembark at station: "
-                                    +station.getName()+"\n",ammount-1)){
-                            return true;
-                    }
-
+        for (Route route : subRoutes(Start_routes, t_routes)) {
+            for (Station station : subStation(route.getStations(), t_stations)) {
+                ArrayList<Station> parameter_t_stations = new ArrayList<>();
+                parameter_t_stations.addAll(t_stations);
+                String[] message_parameter = {message_[0] + "Go to The bus: " + route.getBus().getName() +
+                        " with route: " + route.getName() +
+                        " embark at station:" + Start + " and disembark at station: "
+                        + station.getName() + "\n"};
+                if (findRoute(station.getName(), End, addRoute(t_routes, route), parameter_t_stations,
+                        message_parameter, ammount - 1)) {
+                    message_[0] = message_parameter[0];
+                    return true;
                 }
+
             }
+        }
 
         return false;
     }
-    public static boolean checkRoutes(String Start,String End){
-        message="";
-        for(int ammount=0; ammount<BusDAOAndroid.getBuses().size(); ammount++)
-            if(findRoute(Start,End,new ArrayList<Route>(),new ArrayList<Station>(),message,ammount))
+
+    public static boolean checkRoutes(String Start, String End) {
+        message[0] = "";
+        for (int ammount = 0; ammount < BusDAOAndroid.getBuses().size(); ammount++)
+            if (findRoute(Start, End, new ArrayList<Route>(), new ArrayList<Station>(), message, ammount))
                 return true;
         return false;
     }
 
-    public static ArrayList<Station> subStation(ArrayList<Station> stations,ArrayList<Station> t_stations){
-        ArrayList<Station> returned=new ArrayList<Station>();
+    public static ArrayList<Station> subStation(ArrayList<Station> stations, ArrayList<Station> t_stations) {
+        ArrayList<Station> returned = new ArrayList<Station>();
         returned.addAll(stations);
         returned.removeAll(t_stations);
         return returned;
     }
-    public static ArrayList<Route> subRoutes(ArrayList<Route> routes,ArrayList<Route> t_routes){
-        ArrayList<Route> returned=new ArrayList<>();
+
+    public static ArrayList<Route> subRoutes(ArrayList<Route> routes, ArrayList<Route> t_routes) {
+        ArrayList<Route> returned = new ArrayList<>();
         returned.addAll(routes);
         returned.removeAll(t_routes);
         return returned;
     }
-    public static ArrayList<Route> addRoute(ArrayList<Route> routes, Route new_route){
-        ArrayList<Route> returned=new ArrayList<>();
+
+    public static ArrayList<Route> addRoute(ArrayList<Route> routes, Route new_route) {
+        ArrayList<Route> returned = new ArrayList<>();
         returned.addAll(routes);
         returned.add(new_route);
         return returned;

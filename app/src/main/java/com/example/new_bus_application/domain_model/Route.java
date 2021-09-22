@@ -9,7 +9,7 @@ public class Route {
     public Route(String name){
         this.name=name;
     }
-    public void SetBus(Bus bus){
+    public void setBus(Bus bus){
         this.bus=bus;
     }
     public Bus getBus(){
