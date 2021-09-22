@@ -555,7 +555,7 @@
 											"top": 410,
 											"width": 195.46337890625,
 											"height": 13,
-											"text": "+getBuses(): ArrayList<Bus>",
+											"text": "+getBus(): Bus",
 											"horizontalAlignment": 0
 										},
 										{
@@ -589,7 +589,7 @@
 											"top": 440,
 											"width": 195.46337890625,
 											"height": 13,
-											"text": "+addBus(Bus bus): void",
+											"text": "+setBus(Bus bus): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -799,13 +799,47 @@
 											"height": 13,
 											"text": "-routes: ArrayList<Route>",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF8Daohoh1NnMo=",
+											"_parent": {
+												"$ref": "AAAAAAF8BE4GMhtd8M4="
+											},
+											"model": {
+												"$ref": "AAAAAAF8DaohjR1KbJQ="
+											},
+											"font": "Arial;13;0",
+											"left": 125,
+											"top": 588,
+											"width": 191,
+											"height": 13,
+											"text": "-longitude: double",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF8Dap1Uh5EzfE=",
+											"_parent": {
+												"$ref": "AAAAAAF8BE4GMhtd8M4="
+											},
+											"model": {
+												"$ref": "AAAAAAF8Dap1SR5B9po="
+											},
+											"font": "Arial;13;0",
+											"left": 125,
+											"top": 603,
+											"width": 191,
+											"height": 13,
+											"text": "-latitude: double",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 120,
 									"top": 553,
 									"width": 201,
-									"height": 38
+									"height": 68
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -828,7 +862,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 125,
-											"top": 596,
+											"top": 626,
 											"width": 191,
 											"height": 13,
 											"text": "+getName(): String",
@@ -845,7 +879,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 125,
-											"top": 611,
+											"top": 641,
 											"width": 191,
 											"height": 13,
 											"text": "+getRoutes(): ArrayList<Route>",
@@ -862,18 +896,52 @@
 											},
 											"font": "Arial;13;0",
 											"left": 125,
-											"top": 626,
+											"top": 656,
 											"width": 191,
 											"height": 13,
 											"text": "+addRoute(Route route)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF8DarJNyAVkrg=",
+											"_parent": {
+												"$ref": "AAAAAAF8BE4GMhtersc="
+											},
+											"model": {
+												"$ref": "AAAAAAF8DarJLiAS2h0="
+											},
+											"font": "Arial;13;0",
+											"left": 125,
+											"top": 671,
+											"width": 191,
+											"height": 13,
+											"text": "+getLongitude(): double",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF8Dar/lSEm/Eg=",
+											"_parent": {
+												"$ref": "AAAAAAF8BE4GMhtersc="
+											},
+											"model": {
+												"$ref": "AAAAAAF8Dar/jSEjG6Y="
+											},
+											"font": "Arial;13;0",
+											"left": 125,
+											"top": 686,
+											"width": 191,
+											"height": 13,
+											"text": "+getLatitude(): double",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 120,
-									"top": 591,
+									"top": 621,
 									"width": 201,
-									"height": 53
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -909,7 +977,7 @@
 							"left": 120,
 							"top": 528,
 							"width": 201,
-							"height": 116,
+							"height": 176,
 							"nameCompartment": {
 								"$ref": "AAAAAAF8BE4GMRtY0e4="
 							},
@@ -1281,7 +1349,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 232,
+									"left": 231,
 									"top": 492,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -1324,7 +1392,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 204,
-									"top": 488,
+									"top": 489,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -1365,7 +1433,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 245,
-									"top": 492,
+									"top": 491,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -1384,7 +1452,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 205,
+									"left": 204,
 									"top": 499,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -1430,7 +1498,7 @@
 								"$ref": "AAAAAAF8BEaGGxn9hmo="
 							},
 							"lineStyle": 1,
-							"points": "217:473;218:527",
+							"points": "216:473;218:527",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF8BFN3oh0cbq4="
@@ -3449,8 +3517,8 @@
 										"$ref": "AAAAAAF8BKkaOzEAjhs="
 									},
 									"font": "Arial;13;0",
-									"left": 352,
-									"top": 597,
+									"left": 353,
+									"top": 614,
 									"width": 30.71630859375,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -3472,8 +3540,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 367,
-									"top": 612,
+									"left": 369,
+									"top": 629,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -3493,8 +3561,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 368,
-									"top": 568,
+									"left": 367,
+									"top": 585,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3514,8 +3582,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 388,
-									"top": 599,
+									"left": 390,
+									"top": 613,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -3535,8 +3603,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 385,
-									"top": 612,
+									"left": 388,
+									"top": 627,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -3556,8 +3624,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 393,
-									"top": 571,
+									"left": 392,
+									"top": 585,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -3577,8 +3645,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 346,
-									"top": 597,
+									"left": 347,
+									"top": 616,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -3597,8 +3665,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 348,
-									"top": 611,
+									"left": 351,
+									"top": 629,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -3617,8 +3685,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 343,
-									"top": 570,
+									"left": 341,
+									"top": 589,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -3663,7 +3731,7 @@
 								"$ref": "AAAAAAF8BKai7yo3gBQ="
 							},
 							"lineStyle": 1,
-							"points": "415:591;321:588",
+							"points": "415:603;321:609",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF8BKkaPDEFdIA="
@@ -5433,7 +5501,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF8BEaGGxn7P1g="
 							},
-							"name": "getBuses",
+							"name": "getBus",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -5441,7 +5509,9 @@
 									"_parent": {
 										"$ref": "AAAAAAF8BEoxsBsMFyM="
 									},
-									"type": "ArrayList<Bus>",
+									"type": {
+										"$ref": "AAAAAAF8BEE23RkmdeQ="
+									},
 									"direction": "return"
 								}
 							]
@@ -5471,7 +5541,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF8BEaGGxn7P1g="
 							},
-							"name": "addBus",
+							"name": "setBus",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -5479,8 +5549,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF8BE0qdhs9Sgk="
 									},
-									"name": "Bus bus",
-									"type": ""
+									"name": "Bus bus"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5574,6 +5643,26 @@
 							"name": "routes",
 							"visibility": "private",
 							"type": "ArrayList<Route>"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF8DaohjR1KbJQ=",
+							"_parent": {
+								"$ref": "AAAAAAF8BE4GMRtVSdk="
+							},
+							"name": "longitude",
+							"visibility": "private",
+							"type": "double"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF8Dap1SR5B9po=",
+							"_parent": {
+								"$ref": "AAAAAAF8BE4GMRtVSdk="
+							},
+							"name": "latitude",
+							"visibility": "private",
+							"type": "double"
 						}
 					],
 					"operations": [
@@ -5631,6 +5720,44 @@
 									},
 									"name": "Route route",
 									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF8DarJLiAS2h0=",
+							"_parent": {
+								"$ref": "AAAAAAF8BE4GMRtVSdk="
+							},
+							"name": "getLongitude",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF8Dar1KCCRSaE=",
+									"_parent": {
+										"$ref": "AAAAAAF8DarJLiAS2h0="
+									},
+									"type": "double",
+									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF8Dar/jSEjG6Y=",
+							"_parent": {
+								"$ref": "AAAAAAF8BE4GMRtVSdk="
+							},
+							"name": "getLatitude",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF8Dasc9CGivNk=",
+									"_parent": {
+										"$ref": "AAAAAAF8Dar/jSEjG6Y="
+									},
+									"type": "double",
+									"direction": "return"
 								}
 							]
 						}
