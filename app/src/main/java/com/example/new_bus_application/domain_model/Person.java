@@ -91,15 +91,9 @@ public class Person {
         ArrayList<Route> Start_routes=new ArrayList<>();
         Station Start_station=StationDAOAndroid.getStations().get(Start);
         ArrayList<Route> End_routes=new ArrayList<>();
-        for(Route route: Start_station.getRoutes()){
-            if(!Start_routes.contains(route))
-                Start_routes.add(route);
-        }
         Station End_station=StationDAOAndroid.getStations().get(End);
-        for(Route route: End_station.getRoutes()){
-            if(!End_routes.contains(route))
-                End_routes.add(route);
-        }
+        Start_routes.addAll(Start_station.getRoutes());
+        End_routes.addAll(End_station.getRoutes());
         for(Route route:subRoutes(Start_routes,End_routes)){
             if(End_routes.contains(route)){
                 message_+="Go to The bus: "+route.getBus().getName()+" with route: "+route.getName()
@@ -109,7 +103,6 @@ public class Person {
         }
         if(ammount<=1) return false;
         t_stations.add(Start_station);
-
             for(Route route: subRoutes(Start_routes,t_routes)){
                 for(Station station: subStation(route.getStations(),t_stations)){
                     ArrayList<Station> parameter_t_stations=new ArrayList<>();
@@ -126,6 +119,14 @@ public class Person {
 
         return false;
     }
+    public static boolean checkRoutes(String Start,String End){
+        message="";
+        for(int ammount=0; ammount<BusDAOAndroid.getBuses().size(); ammount++)
+            if(findRoute(Start,End,new ArrayList<Route>(),new ArrayList<Station>(),message,ammount))
+                return true;
+        return false;
+    }
+
     public static ArrayList<Station> subStation(ArrayList<Station> stations,ArrayList<Station> t_stations){
         ArrayList<Station> returned=new ArrayList<Station>();
         returned.addAll(stations);
