@@ -1,0 +1,29 @@
+package com.example.new_bus_application.domain_model.DAO;
+
+import com.example.new_bus_application.domain_model.Station;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class StationDAOAndroid {
+    private static HashMap<String, Station> stations;
+
+    public static void AddBus(String name, Station station) {
+        stations.put(name,station);
+    }
+
+
+    public static HashMap<String, Station> getStations() {
+        return stations;
+    }
+
+
+    public static ArrayList<Station> ListStations() {
+        ArrayList<Station> stationsArrayList=new ArrayList<>();
+        //https://beginnersbook.com/2013/12/how-to-loop-hashmap-in-java/
+        for(Map.Entry me:stations.entrySet())
+            stationsArrayList.add((Station) me.getValue());
+        return stationsArrayList;
+    }
+}
