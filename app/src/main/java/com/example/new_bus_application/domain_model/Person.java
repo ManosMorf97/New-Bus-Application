@@ -96,7 +96,7 @@ public class Person {
         return nearestStations;
     }
 
-    public static boolean findRoute(String Start, String End, ArrayList<Route> t_routes, ArrayList<Station> t_stations,
+    private static boolean findRoute(String Start, String End, ArrayList<Route> t_routes, ArrayList<Station> t_stations,
                                     String[] message_, int ammount) {
         ArrayList<Route> Start_routes = new ArrayList<>();
         Station Start_station = StationDAOAndroid.getStations().get(Start);
@@ -134,21 +134,23 @@ public class Person {
     }
 
     public static boolean checkRoutes(String Start, String End) {
-        for (int ammount = 0; ammount < BusDAOAndroid.getBuses().size(); ammount++) {
+        for (int ammount = 1; ammount <= 2*BusDAOAndroid.getBuses().size(); ammount++) {
             message[0] = "";
-            if (findRoute(Start, End, new ArrayList<Route>(), new ArrayList<Station>(), message, ammount+1))
+            if (findRoute(Start, End, new ArrayList<Route>(), new ArrayList<Station>(), message, ammount))
                 return true;
         }
         message[0]="There are no buses";
         return false;
     }
 
-    public static ArrayList<Station> subStation(ArrayList<Station> stations, ArrayList<Station> t_stations,Station begin) {
+    private static ArrayList<Station> subStation(ArrayList<Station> stations, ArrayList<Station> t_stations,Station begin) {
         ArrayList<Station> returned = new ArrayList<Station>();
         boolean add=false;
         for(Station station:returned) {
-            if (station == begin)
-                add=true;
+            if (station == begin) {
+                add = true;
+                continue;
+            }
             if(add)
                 returned.add(station);
         }
@@ -157,14 +159,14 @@ public class Person {
         return returned;
     }
 
-    public static ArrayList<Route> subRoutes(ArrayList<Route> routes, ArrayList<Route> t_routes) {
+    private static ArrayList<Route> subRoutes(ArrayList<Route> routes, ArrayList<Route> t_routes) {
         ArrayList<Route> returned = new ArrayList<>();
         returned.addAll(routes);
         returned.removeAll(t_routes);
         return returned;
     }
 
-    public static ArrayList<Route> addRoute(ArrayList<Route> routes, Route new_route) {
+    private static ArrayList<Route> addRoute(ArrayList<Route> routes, Route new_route) {
         ArrayList<Route> returned = new ArrayList<>();
         returned.addAll(routes);
         returned.add(new_route);
