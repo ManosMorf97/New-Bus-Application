@@ -3,7 +3,7 @@ package com.example.new_bus_application.domain_model;
 import com.example.new_bus_application.domain_model.DAO.BusDAOAndroid;
 import com.example.new_bus_application.domain_model.DAO.StationDAOAndroid;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -104,8 +104,8 @@ public class Person {
         Station End_station = StationDAOAndroid.getStations().get(End);
         Start_routes.addAll(Start_station.getRoutes());
         End_routes.addAll(End_station.getRoutes());
-        for (Route route : subRoutes(Start_routes, End_routes)) {
-            if (End_routes.contains(route)) {
+        for (Route route : subRoutes(Start_routes, t_routes)) {
+            if (End_routes.contains(route)&&route.getStations().indexOf(Start_station)<route.getStations().indexOf(End_station)) {
                 message_[0] += "Go to The bus: " + route.getBus().getName() + " with route: " + route.getName()
                         + " embark at station:" + Start + " and disembark at station: " + End + "\n";
                 return true;
@@ -114,7 +114,7 @@ public class Person {
         if (ammount <= 1) return false;
         t_stations.add(Start_station);
         for (Route route : subRoutes(Start_routes, t_routes)) {
-            for (Station station : subStation(route.getStations(), t_stations)) {
+            for (Station station : subStation(route.getStations(), t_stations,Start_station)) {
                 ArrayList<Station> parameter_t_stations = new ArrayList<>();
                 parameter_t_stations.addAll(t_stations);
                 String[] message_parameter = {message_[0] + "Go to The bus: " + route.getBus().getName() +
@@ -143,10 +143,17 @@ public class Person {
         return false;
     }
 
-    public static ArrayList<Station> subStation(ArrayList<Station> stations, ArrayList<Station> t_stations) {
+    public static ArrayList<Station> subStation(ArrayList<Station> stations, ArrayList<Station> t_stations,Station begin) {
         ArrayList<Station> returned = new ArrayList<Station>();
-        returned.addAll(stations);
+        boolean add=false;
+        for(Station station:returned) {
+            if (station == begin)
+                add=true;
+            if(add)
+                returned.add(station);
+        }
         returned.removeAll(t_stations);
+
         return returned;
     }
 
