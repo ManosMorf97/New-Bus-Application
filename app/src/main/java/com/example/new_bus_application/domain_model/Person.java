@@ -76,7 +76,7 @@ public class Person {
         return buses;
     }
 
-    public static ArrayList<Station> getNearestStations(double longitude, double latitude) {
+    public static ArrayList<Station> getNearestStations(double latitude, double longitude) {
         ArrayList<Station> nearestStations = new ArrayList<>(3);
         ArrayList<Station> stations = StationDAOAndroid.ListStations();
         if(stations.size()<=3) return stations;
