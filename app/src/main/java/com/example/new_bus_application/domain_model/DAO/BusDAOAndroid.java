@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BusDAOAndroid {
-    private static HashMap<String,Bus> buses;
+    private static HashMap<String,Bus> buses=new HashMap<>();
 
     public static void AddBus(String name, Bus bus) {
         buses.put(name,bus);
@@ -25,5 +25,8 @@ public class BusDAOAndroid {
         for(Map.Entry me:buses.entrySet())
             busArrayList.add((Bus)me.getValue());
         return busArrayList;
+    }
+    public static void clear(){
+        buses.clear();
     }
 }

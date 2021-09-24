@@ -7,10 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StationDAOAndroid {
-    private static HashMap<String, Station> stations;
+    private static HashMap<String, Station> stations=new HashMap<>();
 
-    public static void AddBus(String name, Station station) {
+    public static void AddStation(String name, Station station) {
         stations.put(name,station);
+    }
+
+    public static void clear(){
+        stations.clear();
     }
 
 
