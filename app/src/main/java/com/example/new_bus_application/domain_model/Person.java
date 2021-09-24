@@ -79,10 +79,19 @@ public class Person {
     public static ArrayList<Station> getNearestStations(double longitude, double latitude) {
         ArrayList<Station> nearestStations = new ArrayList<>(3);
         ArrayList<Station> stations = StationDAOAndroid.ListStations();
+        if(stations.size()<=3) return stations;
         for (int i = 0; i < 3; i++) {
-            int nearestStation_index = 0;
-            double distance = Math.sqrt(Math.pow(stations.get(0).getLongitude() - longitude, 2) +
-                    Math.pow(stations.get(0).getLatitude() - latitude, 2));
+            int nearestStation_index=-1;
+            double distance=-1;
+            for(int j=0; j<stations.size(); j++){
+                if(!nearestStations.contains(stations.get(j))){
+                    nearestStation_index = 0;
+                    distance = Math.sqrt(Math.pow(stations.get(0).getLongitude() - longitude, 2) +
+                            Math.pow(stations.get(0).getLatitude() - latitude, 2));
+                }
+
+            }
+
             for (int j = 1; j < stations.size(); j++) {
                 double next_distance = Math.sqrt(Math.pow(stations.get(j).getLongitude() - longitude, 2) +
                         Math.pow(stations.get(j).getLatitude() - latitude, 2));

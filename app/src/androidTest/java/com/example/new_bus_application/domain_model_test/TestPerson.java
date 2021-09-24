@@ -78,5 +78,5 @@ public class TestPerson {
             Assert.assertTrue(StationDAOAndroid.getStations().get(station_names[i])==stations.get(i));
 
     }
-    
+
 }
