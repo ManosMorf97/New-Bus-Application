@@ -116,19 +116,21 @@ public class Person {
         for (Route route : subRoutes(Start_routes, t_routes)) {
             if (End_routes.contains(route)&&route.getStations().indexOf(Start_station)<route.getStations().indexOf(End_station)) {
                 message_[0] += "Go to The bus: " + route.getBus().getName() + " with route: " + route.getName()
-                        + " embark at station:" + Start + " and disembark at station: " + End + "\n";
+                        + " embark at station: " + Start + " and disembark at station: " + End + "\n";
                 return true;
             }
         }
         if (ammount <= 1) return false;
         t_stations.add(Start_station);
-        for (Route route : subRoutes(Start_routes, t_routes)) {
-            for (Station station : subStation(route.getStations(), t_stations,Start_station)) {
+        ArrayList<Route> subbed_routes= subRoutes(Start_routes, t_routes);
+        for (Route route :subbed_routes) {
+            ArrayList<Station> subbed_stations=subStation(route.getStations(), t_stations,Start_station);
+            for (Station station : subbed_stations) {
                 ArrayList<Station> parameter_t_stations = new ArrayList<>();
                 parameter_t_stations.addAll(t_stations);
                 String[] message_parameter = {message_[0] + "Go to The bus: " + route.getBus().getName() +
                         " with route: " + route.getName() +
-                        " embark at station:" + Start + " and disembark at station: "
+                        " embark at station: " + Start + " and disembark at station: "
                         + station.getName() + "\n"};
                 if (findRoute(station.getName(), End, addRoute(t_routes, route), parameter_t_stations,
                         message_parameter, ammount - 1)) {
@@ -155,7 +157,7 @@ public class Person {
     private static ArrayList<Station> subStation(ArrayList<Station> stations, ArrayList<Station> t_stations,Station begin) {
         ArrayList<Station> returned = new ArrayList<Station>();
         boolean add=false;
-        for(Station station:returned) {
+        for(Station station:stations) {
             if (station == begin) {
                 add = true;
                 continue;

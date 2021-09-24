@@ -23,10 +23,10 @@ public class TestPerson {
         for(int i=0; i<8; i++)
             StationDAOAndroid.AddStation(stationnames[i],new Station(stationnames[i],longitudes[i],latitudes[i]));
         Route[] routes=new Route[6];
-        String [] name_routes={"A-D","D-A","A2-B2","B2-A2","D-B3","B3-D"};
+        String [] name_routes={"A-D","D-A","A2-A3","A3-A2","D-B3","B3-D"};
         for(int i=0; i<6; i++)
             routes[i]=new Route(name_routes[i]);
-        String [][] routeStations={{"A","B","C","D"},{"D","C","B","A"},{"A2","C","B2"},{"B2","C","A2"},
+        String [][] routeStations={{"A","B","C","D"},{"D","C","B","A"},{"A2","C","B2","A3"},{"A3","B2","C","A2"},
                 {"D","A3","B3"},{"B3","A3","D"}};
         for(int i=0; i<6; i++)
             for(int j=0; j<routeStations[i].length; j++)
@@ -76,6 +76,59 @@ public class TestPerson {
         String [] station_names={"B","A","C"};
         for(int i=0; i<3; i++)
             Assert.assertTrue(StationDAOAndroid.getStations().get(station_names[i])==stations.get(i));
+
+    }
+    @Test
+    public void testCheckRoutes(){
+        Person.checkRoutes("A","D");
+        String message="Go to The bus: " + "Line1"+ " with route: " +"A-D"+
+                " embark at station: " +"A"+ " and disembark at station: " + "D" + "\n";
+        Assert.assertTrue(Person.getMessage().equals(message));
+
+        Person.checkRoutes("B","A3");
+        message="Go to The bus: " + "Line1"+ " with route: " +"A-D"+
+                " embark at station: " +"B"+ " and disembark at station: " + "C" + "\n"+
+                "Go to The bus: " + "Line2"+ " with route: " +"A2-A3"+
+                " embark at station: " +"C"+ " and disembark at station: " + "A3" + "\n";
+        Assert.assertTrue(Person.getMessage().equals(message));
+        Person.checkRoutes("A","B3");
+        message="Go to The bus: " + "Line1"+ " with route: " +"A-D"+
+                " embark at station: " +"A"+ " and disembark at station: " + "D" + "\n"+
+                "Go to The bus: " + "Line3"+ " with route: " +"D-B3"+
+                " embark at station: " +"D"+ " and disembark at station: " + "B3" + "\n";
+        Assert.assertTrue(Person.getMessage().equals(message));
+
+        Person.checkRoutes("A2","A3");
+        message= "Go to The bus: " + "Line2"+ " with route: " +"A2-A3"+
+                " embark at station: " +"A2"+ " and disembark at station: " + "A3" + "\n";
+        Assert.assertTrue(Person.getMessage().equals(message));
+
+        Person.checkRoutes("A","A2");
+        message="Go to The bus: " + "Line1"+ " with route: " +"A-D"+
+                " embark at station: " +"A"+ " and disembark at station: " + "C" + "\n"+
+                "Go to The bus: " + "Line2"+ " with route: " +"A3-A2"+
+                " embark at station: " +"C"+ " and disembark at station: " + "A2" + "\n";
+        Assert.assertTrue(Person.getMessage().equals(message));
+
+        Station[] stations= {new Station("Ghost",999,999),
+                new Station("Ghost2",1000,1000)};
+
+        StationDAOAndroid.AddStation("Ghost",stations[0]);
+        StationDAOAndroid.AddStation("Ghost2",stations[1]);
+        Route[] routes={new Route("Ghost-Ghost2"),new Route("Ghost2-Ghost")};
+        Bus bus=new Bus("000","UNKNOWN");
+        for (Station station:stations){
+            for(Route route:routes){
+                Person.connect(route,station);
+            }
+        }
+        for(Route route:routes)
+            Person.connect(bus,route);
+        Person.checkRoutes("A","Ghost");
+        message="There are no buses";
+        Assert.assertTrue(Person.getMessage().equals(message));
+
+
 
     }
 
