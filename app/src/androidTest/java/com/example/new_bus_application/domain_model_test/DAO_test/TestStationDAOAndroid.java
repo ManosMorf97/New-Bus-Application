@@ -4,17 +4,17 @@ import com.example.new_bus_application.domain_model.DAO.StationDAOAndroid;
 import com.example.new_bus_application.domain_model.Station;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TestStationDAOAndroid {
-    Station station0;
-    Station station1;
-    HashMap<String,Station> stations;
-    @Before
-    public void init(){
+    private static Station station0;
+    private static Station station1;
+    private static HashMap<String,Station> stations;
+    @BeforeClass
+    public static void init(){
         station0=new Station("A",0,0);
         station1=new Station("B",1,1);
         StationDAOAndroid.AddStation("A",station0);

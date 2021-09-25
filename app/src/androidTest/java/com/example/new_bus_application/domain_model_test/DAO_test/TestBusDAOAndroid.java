@@ -2,21 +2,19 @@ package com.example.new_bus_application.domain_model_test.DAO_test;
 
 import com.example.new_bus_application.domain_model.Bus;
 import com.example.new_bus_application.domain_model.DAO.BusDAOAndroid;
-import com.example.new_bus_application.domain_model.DAO.StationDAOAndroid;
-import com.example.new_bus_application.domain_model.Station;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TestBusDAOAndroid {
-    Bus bus0;
-    Bus bus1;
-    HashMap<String,Bus> buses;
-    @Before
-    public void init(){
+    private static Bus bus0;
+    private static Bus bus1;
+    private static HashMap<String,Bus> buses;
+    @BeforeClass
+    public static void init(){
         bus0=new Bus("XJ","Line1");
         bus1=new Bus("XJ1","Line2");
         BusDAOAndroid.AddBus("Line1",bus0);

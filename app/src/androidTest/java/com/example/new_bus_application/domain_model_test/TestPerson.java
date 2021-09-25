@@ -7,7 +7,7 @@ import com.example.new_bus_application.domain_model.Route;
 import com.example.new_bus_application.domain_model.Station;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import static com.example.new_bus_application.domain_model.Person.*;
 
 public class TestPerson {
-    @Before
-    public void init(){
+    @BeforeClass
+    public static void init(){
         String [] stationnames={"A","B","C","D","A2","B2","A3","B3"};
         int [] longitudes={0,1,2,3,4,5,6,7,8};
         int [] latitudes={0,1,2,3,4,5,6,7,8};
