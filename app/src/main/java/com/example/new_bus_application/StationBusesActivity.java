@@ -10,18 +10,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-import android.view.Menu;
-import android.view.MenuItem;
-
-public class MainActivity extends AppCompatActivity {
+public class StationBusesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_station_buses);
 
     }
-
-
 }

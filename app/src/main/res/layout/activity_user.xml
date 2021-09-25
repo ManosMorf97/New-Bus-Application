@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#150847"
+    tools:context=".UserActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.New_Bus_Application.AppBarOverlay"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <Button
+        android:id="@+id/see_bus_stations"
+        android:layout_width="127dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="240dp"
+        android:backgroundTint="#ffa930"
+        android:text="See bus' stations"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/see_stations_buses"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <Button
+        android:id="@+id/see_stations_buses"
+        android:layout_width="157dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:backgroundTint="#ffa930"
+        android:text="See station's buses"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <Button
+        android:id="@+id/see_nearest_stations"
+        android:layout_width="188dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="#ffa930"
+        android:text="See nearest stations"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintEnd_toStartOf="@+id/make_route"
+        app:layout_constraintHorizontal_bias="0.039"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/see_bus_stations"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/make_route"
+        android:layout_width="108dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:backgroundTint="#ffa930"
+        android:text="Make route"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/see_stations_buses"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#ff0000"
+        android:text="Back"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
