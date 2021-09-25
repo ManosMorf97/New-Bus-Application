@@ -85,14 +85,15 @@ public class Person {
             double distance=-1;
             for(int j=0; j<stations.size(); j++){
                 if(!nearestStations.contains(stations.get(j))){
-                    nearestStation_index = 0;
-                    distance = Math.sqrt(Math.pow(stations.get(0).getLongitude() - longitude, 2) +
-                            Math.pow(stations.get(0).getLatitude() - latitude, 2));
+                    nearestStation_index = j;
+                    distance = Math.sqrt(Math.pow(stations.get(j).getLongitude() - longitude, 2) +
+                            Math.pow(stations.get(j).getLatitude() - latitude, 2));
+                    break;
                 }
 
             }
 
-            for (int j = 1; j < stations.size(); j++) {
+            for (int j = 0; j < stations.size(); j++) {
                 double next_distance = Math.sqrt(Math.pow(stations.get(j).getLongitude() - longitude, 2) +
                         Math.pow(stations.get(j).getLatitude() - latitude, 2));
                 if (!nearestStations.contains(stations.get(j)) && distance > next_distance) {
