@@ -186,8 +186,68 @@ public class Person {
         return returned;
     }
     public static void initialize(){
-        String stations[]={"KIFISSIA","KAT","MAROUSSI","NERATZIOTISSA","IRINI","IRAKLIO", "NEA IONIA","PEFKAKIA","PERISSOS",
-                "ANO PATISSIA","AGHIOS ELEFTHERIOS","KATO PATISSIA","AGHIOS NIKOLAOS","ATTIKI","VICTORIA","OMONIA",
-                "MONASTIRAKI","THISSIO","PETRALONA","TAVROS","KALITHEA","MOSCHATO","FALIRO","PIRAEUS"};
+        String stations_names[]={"KIFISSIA","KAT","MAROUSSI","NERATZIOTISSA","IRINI","IRAKLIO", "NEA IONIA","PEFKAKIA"
+                ,"PERISSOS", "ANO PATISSIA","AGHIOS ELEFTHERIOS","KATO PATISSIA","AGHIOS NIKOLAOS","ATTIKI","VICTORIA"
+                ,"OMONIA", "MONASTIRAKI","THISSIO","PETRALONA","TAVROS","KALITHEA","MOSCHATO","FALIRO","PIRAEUS"
+                ,"ANTHOUPOLI", "PERISTERI","ΑGHΙΟΣ ΑΝΤOΝΙΟS","SEPOLIA","LARISSA STATION","METAXOURGHIO","PANEPISTIMIO"
+                ,"SYNTAGMA", "ΑCROPOLI","SYNGROU - FIX","NEOS KOSMOS","AGHIOS IOANNIS","DAFNI","AGHIOS DIMITRIOS",
+                "ILIOUPOLI","ALIMOS","ARGYROUPOLI","ELLINIKO","NIKAIA","KORYDALLOS","AGHIA VARVARA","AGHIA MARINA"
+                ,"EGALEO","ELEONAS","KERAMEIKOS","EVANGELISMOS","MEGARO MOUSSIKIS","AMBELOKIPI","PANORMOU","KATEHAKI",
+                "ETHNIKI AMYNA","HOLARGOS","NOMISMATOKOPIO","AGHIA PARASKEVI","HALANDRI","DOUK. PLAKENTIAS"};
+
+        double [] latitudes={38.0736817,38.065922,38.056182,38.0450788,38.0437324,38.0462627,38.0398349,38.0371452,
+                38.032728,38.0235953,38.0201134,38.011031,38.006919,37.9992951,37.9930663,37.984183,37.9760854,
+                37.9767093,37.9686198,37.9626042,37.9604041,37.9550458,37.9449872,37.9481116,
+                38.0171154,38.0131616,38.0066611,38.0026465,37.9919866,37.9862737,37.9803782,37.9745068,37.9687332,
+                37.9645189,37.9569,37.9566294,37.9492026,37.940544,37.929805,37.9183,37.9030515,37.8925685,//3
+                37.96571,37.978924,37.9899328,37.9972998,37.991956,37.9878938,37.97863,37.9760182,
+                37.979287,37.987131,37.9931249,37.9931672,38.000054,38.004519,38.009274,38.0166993,38.021915,38.0245781};
+        double [] longitudes={23.8061214,23.8018393,23.8027913,23.7909649,23.7805333,23.7617785,23.7510863,23.7479803,
+                23.7424813,23.7335176,23.7296698,23.7269931,23.7255223,23.7199094,23.7282005,23.7265033,23.7234369,
+                23.7185174,23.7070795,23.701346,23.6951434,23.6774801,23.6630364,23.6410834,
+                23.6889085,23.693313,23.6972923,23.7113494,23.7186199,23.7189533,23.7308699,23.7330764,23.727412,
+                23.7244829,23.72707,23.7324954,23.7350346,23.7385273,23.7422375,23.744,23.7371504,23.7383798,//3
+                23.6385973,23.6382792,23.6551848,23.6652232,23.6796408,23.6919882,23.7093069,23.7444382,
+                23.7507236,23.754881,23.7615041,23.7739632,23.7835623,23.7925343,23.8034782,23.8104653,23.8189825,23.832187};
+        for(int i=0; i<stations_names.length; i++){
+            StationDAOAndroid.AddStation(stations_names[i],new Station(stations_names[i],latitudes[i],longitudes[i]));
+        }
+        String [] route_names={"KIFISSIA-PIRAEUS","PIRAEUS-KIFISSIA","ANTHOUPOLI-ELLINIKO","ELLINIKO-ANTHOUPOLI",
+                "NIKAIA-DOUK. PLAKENTIAS","DOUK. PLAKENTIAS-NIKAIA"};
+        Route [] routes=new Route[route_names.length];
+        for(int i=0; i<route_names.length; i++){
+            routes[i]=new Route(route_names[i]);
+        }
+        String [][] lines_names={{"KIFISSIA","KAT","MAROUSSI","NERATZIOTISSA","IRINI","IRAKLIO", "NEA IONIA","PEFKAKIA"
+                ,"PERISSOS", "ANO PATISSIA","AGHIOS ELEFTHERIOS","KATO PATISSIA","AGHIOS NIKOLAOS","ATTIKI","VICTORIA"
+                ,"OMONIA", "MONASTIRAKI","THISSIO","PETRALONA","TAVROS","KALITHEA","MOSCHATO","FALIRO","PIRAEUS"},
+                {"ANTHOUPOLI", "PERISTERI","ΑGHΙΟΣ ΑΝΤOΝΙΟS","SEPOLIA","ATTIKI","LARISSA STATION","METAXOURGHIO","OMONIA","PANEPISTIMIO"
+                        ,"SYNTAGMA", "ΑCROPOLI","SYNGROU - FIX","NEOS KOSMOS","AGHIOS IOANNIS","DAFNI","AGHIOS DIMITRIOS",
+                        "ILIOUPOLI","ALIMOS","ARGYROUPOLI","ELLINIKO"},
+                {"NIKAIA","KORYDALLOS","AGHIA VARVARA","AGHIA MARINA"
+                        ,"EGALEO","ELEONAS","KERAMEIKOS","MONASTIRAKI","SYNTAGMA","EVANGELISMOS","MEGARO MOUSSIKIS","AMBELOKIPI","PANORMOU","KATEHAKI",
+                        "ETHNIKI AMYNA","HOLARGOS","NOMISMATOKOPIO","AGHIA PARASKEVI","HALANDRI","DOUK. PLAKENTIAS"}
+        };
+        int k=0;
+        for(int i=0; i<6; i+=2){
+            for(int j=0; j<lines_names[k].length; j++){
+                Person.connect(routes[i],StationDAOAndroid.getStations().get(lines_names[k][j]));
+            }
+            for(int j=lines_names[k].length-1; j>-1; j--){
+                Person.connect(routes[i+1],StationDAOAndroid.getStations().get(lines_names[k][j]));
+            }
+            k++;
+        }
+        k=0;
+        String[] bus_names={"Line1","Line2","Line3"};
+        String[] bus_codes={"000","111","222"};
+        for(int i=0; i<2; i++){
+            BusDAOAndroid.AddBus(bus_names[i],new Bus(bus_codes[i],bus_names[i]));
+            for(int j=0; j<2; j++){
+                Person.connect(BusDAOAndroid.getBuses().get(bus_names[i]),routes[k]);
+                k++;
+            }
+        }
+
     }
 }
