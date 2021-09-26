@@ -238,14 +238,12 @@ public class Person {
             }
             k++;
         }
-        k=0;
         String[] bus_names={"Line1","Line2","Line3"};
         String[] bus_codes={"000","111","222"};
         for(int i=0; i<2; i++){
             BusDAOAndroid.AddBus(bus_names[i],new Bus(bus_codes[i],bus_names[i]));
             for(int j=0; j<2; j++){
-                Person.connect(BusDAOAndroid.getBuses().get(bus_names[i]),routes[k]);
-                k++;
+                Person.connect(BusDAOAndroid.getBuses().get(bus_names[i]),routes[i+j]);
             }
         }
 
