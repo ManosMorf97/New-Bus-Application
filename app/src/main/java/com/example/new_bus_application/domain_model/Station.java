@@ -1,8 +1,9 @@
 package com.example.new_bus_application.domain_model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public class Station{
+public class Station implements Comparator<Station> {
     private ArrayList<Route> routes=new ArrayList<>();
     private final double longitude;
     private final double latitude;
@@ -27,5 +28,11 @@ public class Station{
     }
     public ArrayList<Route> getRoutes(){
         return routes;
+    }
+
+
+    @Override
+    public int compare(Station station, Station station2) {
+        return station.getName().compareTo(station2.getName());
     }
 }

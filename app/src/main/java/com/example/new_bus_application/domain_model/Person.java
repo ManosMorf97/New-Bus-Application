@@ -115,7 +115,8 @@ public class Person {
         Start_routes.addAll(Start_station.getRoutes());
         End_routes.addAll(End_station.getRoutes());
         for (Route route : subRoutes(Start_routes, t_routes)) {
-            if (End_routes.contains(route)&&route.getStations().indexOf(Start_station)<route.getStations().indexOf(End_station)) {
+            if (End_routes.contains(route)&&
+                    route.getStations().indexOf(Start_station)<route.getStations().indexOf(End_station)) {
                 message_[0] += "Go to The bus: " + route.getBus().getName() + " with route: " + route.getName()
                         + " embark at station: " + Start + " and disembark at station: " + End + "\n";
                 return true;
@@ -145,14 +146,14 @@ public class Person {
         return false;
     }
 
-    public static boolean checkRoutes(String Start, String End) {
+    public static void checkRoutes(String Start, String End) {
         for (int ammount = 1; ammount <= 2*BusDAOAndroid.getBuses().size(); ammount++) {
             message[0] = "";
             if (findRoute(Start, End, new ArrayList<Route>(), new ArrayList<Station>(), message, ammount))
-                return true;
+                return ;
         }
         message[0]="There are no buses";
-        return false;
+
     }
 
     private static ArrayList<Station> subStation(ArrayList<Station> stations, ArrayList<Station> t_stations,Station begin) {
@@ -183,5 +184,10 @@ public class Person {
         returned.addAll(routes);
         returned.add(new_route);
         return returned;
+    }
+    public static void initialize(){
+        String stations[]={"KIFISSIA","KAT","MAROUSSI","NERATZIOTISSA","IRINI","IRAKLIO", "NEA IONIA","PEFKAKIA","PERISSOS",
+                "ANO PATISSIA","AGHIOS ELEFTHERIOS","KATO PATISSIA","AGHIOS NIKOLAOS","ATTIKI","VICTORIA","OMONIA",
+                "MONASTIRAKI","THISSIO","PETRALONA","TAVROS","KALITHEA","MOSCHATO","FALIRO","PIRAEUS"};
     }
 }

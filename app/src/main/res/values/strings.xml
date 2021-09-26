@@ -13,4 +13,8 @@
     <string name="title_activity_bus_stations">BusStationsActivity</string>
     <string name="title_activity_station_buses">StationBusesActivity</string>
     <string name="title_activity_route_ativity">RouteAtivity</string>
+    <string name="title_activity_nearest_station">NearestStationActivity</string>
+    <string name="title_activity_user_route">UserRouteActivity</string>
+    <string name="title_activity_show_stations">ShowStations</string>
+    <string name="title_activity_show_buses">ShowBuses</string>
 </resources>

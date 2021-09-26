@@ -10,9 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.New_Bus_Application">
         <activity
+            android:name=".ShowBuses"
+            android:label="@string/title_activity_show_buses"
+            android:theme="@style/Theme.New_Bus_Application.NoActionBar"></activity>
+        <activity
+            android:name=".ShowStationsActivity"
+            android:label="@string/title_activity_show_stations"
+            android:theme="@style/Theme.New_Bus_Application.NoActionBar" />
+        <activity
+            android:name=".UserRouteActivity"
+            android:label="@string/title_activity_user_route"
+            android:theme="@style/Theme.New_Bus_Application.NoActionBar" />
+        <activity
+            android:name=".NearestStationsActivity"
+            android:label="@string/title_activity_nearest_station"
+            android:theme="@style/Theme.New_Bus_Application.NoActionBar" />
+        <activity
             android:name=".RouteAtivity"
             android:label="@string/title_activity_route_ativity"
-            android:theme="@style/Theme.New_Bus_Application.NoActionBar"></activity>
+            android:theme="@style/Theme.New_Bus_Application.NoActionBar" />
         <activity
             android:name=".StationBusesActivity"
             android:label="@string/title_activity_station_buses"

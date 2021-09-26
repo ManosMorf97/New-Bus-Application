@@ -17,11 +17,11 @@ import static com.example.new_bus_application.domain_model.Person.*;
 public class TestPerson {
     @BeforeClass
     public static void init(){
-        String [] stationnames={"A","B","C","D","A2","B2","A3","B3"};
+        String [] station_names={"A","B","C","D","A2","B2","A3","B3"};
         int [] longitudes={0,1,2,3,4,5,6,7,8};
         int [] latitudes={0,1,2,3,4,5,6,7,8};
         for(int i=0; i<8; i++)
-            StationDAOAndroid.AddStation(stationnames[i],new Station(stationnames[i],longitudes[i],latitudes[i]));
+            StationDAOAndroid.AddStation(station_names[i],new Station(station_names[i],longitudes[i],latitudes[i]));
         Route[] routes=new Route[6];
         String [] name_routes={"A-D","D-A","A2-A3","A3-A2","D-B3","B3-D"};
         for(int i=0; i<6; i++)
@@ -31,13 +31,13 @@ public class TestPerson {
         for(int i=0; i<6; i++)
             for(int j=0; j<routeStations[i].length; j++)
                 Person.connect(routes[i],StationDAOAndroid.getStations().get(routeStations[i][j]));
-        String [] busnames={"Line1","Line2","Line3"};
-        String [] buscodes={"0","1","2"};
+        String [] bus_names={"Line1","Line2","Line3"};
+        String [] bus_codes={"0","1","2"};
         int j=0;
         for(int i=0; i<3; i++){
-            BusDAOAndroid.AddBus(busnames[i],new Bus(buscodes[i],busnames[i]));
+            BusDAOAndroid.AddBus(bus_names[i],new Bus(bus_codes[i],bus_names[i]));
             for(int k=0; k<2; k++) {
-                Person.connect(BusDAOAndroid.getBuses().get(busnames[i]), routes[j]);
+                Person.connect(BusDAOAndroid.getBuses().get(bus_names[i]), routes[j]);
                 j++;
             }
         }
