@@ -18,4 +18,9 @@ public class Station  extends HelpComparator{
     public double getLatitude() {
         return latitude;
     }
+
+    public String Info(){
+        return "The station's name is "+super.getName()+" the station's latitude is "+getLatitude()+
+                " the station's longitude is "+getLongitude();
+    }
 }

@@ -12,4 +12,8 @@ public class Bus extends HelpComparator{
     public String getCode(){
         return  code;
     }
+
+    public String Info(){
+        return "The bus' name is: "+getName()+ " the bus' code is: "+code;
+    }
 }

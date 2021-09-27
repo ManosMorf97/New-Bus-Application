@@ -13,6 +13,8 @@ public class Person {
     private static Route chosen_route;
     private static Bus chosen_bus;
 
+    private static String ending_station_name;
+
     public static String getMessage() {
         return message[0];
     }

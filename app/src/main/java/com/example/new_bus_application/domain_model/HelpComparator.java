@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class HelpComparator implements Comparator<HelpComparator> {
-    private final String name;
+    private  String name;
     protected ArrayList<Route> routes;
 
     public HelpComparator(String name) {
         this.name = name;
     }
+    public HelpComparator(){}
     public String getName() {
         return name;
     }
@@ -18,6 +19,9 @@ public class HelpComparator implements Comparator<HelpComparator> {
     }
     public ArrayList<Route> getRoutes(){
         return routes;
+    }
+    public String toString(){
+        return name;
     }
 
 

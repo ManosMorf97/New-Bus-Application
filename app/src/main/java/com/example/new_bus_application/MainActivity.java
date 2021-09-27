@@ -1,21 +1,18 @@
 package com.example.new_bus_application;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.new_bus_application.domain_model.Person;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private static boolean data=false;
+    Button user=findViewById(R.id.User);
+    Button administrator=findViewById(R.id.Administrator);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
             Person.initialize();
             data=true;
         }
+        user.setOnClickListener(view -> {
+            Intent activityChangeIntent=new Intent(MainActivity.this,UserActivity.class);
+            startActivity(activityChangeIntent);
+        });
+
 
 
     }
