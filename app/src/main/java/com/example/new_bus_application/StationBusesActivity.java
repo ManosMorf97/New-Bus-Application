@@ -25,7 +25,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class StationBusesActivity extends AppCompatActivity {
+public class StationBusesActivity extends KeyboardActivity {
     EditText station_name=findViewById(R.id.bus_name);
     ListView listView=findViewById(R.id.buses);
     ArrayList<Station> stationsList= StationDAOAndroid.ListStations();

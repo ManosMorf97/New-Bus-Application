@@ -11,18 +11,17 @@ import android.os.Bundle;
 
 import com.example.new_bus_application.domain_model.Person;
 import com.example.new_bus_application.domain_model.Station;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
-import android.view.View;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -56,7 +55,11 @@ public class NearestStationsActivity extends AppCompatActivity {
         nearest_stations=Person.getNearestStations(latitude,longitude);
         ArrayAdapter<Station> arrayAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item
                 ,nearest_stations);
+        listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener((adapterView, view, i, l)->{
+            Toast toast=Toast.makeText(getApplicationContext(),
+                    nearest_stations.get(i).Info(),Toast.LENGTH_LONG);
+            toast.show();
 
                     });
 
