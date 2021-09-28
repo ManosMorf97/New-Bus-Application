@@ -19,15 +19,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class RouteActivity extends AppCompatActivity {
-    EditText [] editTexts={findViewById(R.id.begining_station),findViewById(R.id.ending_station)};
-    ListView listView=findViewById(R.id.stations);
-    ArrayList<Station> stationsList= StationDAOAndroid.ListStations();
-    Button makeRoute=findViewById(R.id.make_route);
-    Button back=findViewById(R.id.back);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route);
+
+        EditText [] editTexts={findViewById(R.id.begining_station),findViewById(R.id.ending_station)};
+        ListView listView=findViewById(R.id.stations);
+        ArrayList<Station> stationsList= StationDAOAndroid.ListStations();
+        Button makeRoute=findViewById(R.id.button);
+        Button back=findViewById(R.id.back);
         Collections.sort(stationsList,new HelpComparator());
         ArrayAdapter<Station> arrayAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item
                 ,stationsList);
@@ -37,6 +39,7 @@ public class RouteActivity extends AppCompatActivity {
             for(EditText editText:editTexts){
                 if(editText.getText().toString().equals("")){
                     editText.setText(stationsList.get(i).getName());
+                    break;
                 }
             }
         });

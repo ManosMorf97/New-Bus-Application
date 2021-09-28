@@ -11,13 +11,14 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private static boolean data=false;
-    Button user=findViewById(R.id.User);
-    Button administrator=findViewById(R.id.Administrator);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button user=findViewById(R.id.User);
+        Button administrator=findViewById(R.id.Administrator);
         if(!data){
             Person.initialize();
             data=true;

@@ -20,16 +20,18 @@ import java.util.Collections;
 
 public class BusStationsActivity extends KeyboardActivity {
 
-    EditText bus_name=findViewById(R.id.bus_name);
-    ListView listView=findViewById(R.id.buses);
-    ArrayList<Bus> busesList= BusDAOAndroid.ListBuses();
-    Button show_stations=findViewById(R.id.button);
-    Button back=findViewById(R.id.back);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_stations);
+
+        EditText bus_name=findViewById(R.id.bus_name);
+        ListView listView=findViewById(R.id.buses);
+        ArrayList<Bus> busesList= BusDAOAndroid.ListBuses();
+        Button show_stations=findViewById(R.id.button);
+        Button back=findViewById(R.id.back);
         Collections.sort(busesList,new HelpComparator());
         ArrayAdapter<Bus> arrayAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item
                 ,busesList);

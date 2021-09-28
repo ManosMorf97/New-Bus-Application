@@ -26,8 +26,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class NearestStationsActivity extends AppCompatActivity {
-    ListView listView = findViewById(R.id.stations);
-    Button back = findViewById(R.id.back);
+
     ArrayList<Station> nearest_stations;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -35,6 +34,9 @@ public class NearestStationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearest_stations);
+
+        ListView listView = findViewById(R.id.stations);
+        Button back = findViewById(R.id.back);
         double latitude, longitude;
         //stackOverflow https://stackoverflow.com/questions/2227292/how-to-get-latitude-and-longitude-of-the-mobile-device-in-android
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

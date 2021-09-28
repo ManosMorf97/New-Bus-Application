@@ -29,7 +29,7 @@
             android:label="@string/title_activity_nearest_station"
             android:theme="@style/Theme.New_Bus_Application.NoActionBar" />
         <activity
-            android:name=".RouteAtivity"
+            android:name=".RouteActivity"
             android:label="@string/title_activity_route_ativity"
             android:theme="@style/Theme.New_Bus_Application.NoActionBar" />
         <activity
