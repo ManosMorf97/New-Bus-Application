@@ -18,7 +18,7 @@ import com.example.new_bus_application.domain_model.Station;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class RouteActivity extends AppCompatActivity {
+public class RouteActivity extends KeyboardActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

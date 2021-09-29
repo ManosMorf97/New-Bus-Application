@@ -119,8 +119,8 @@ public class Person {
         for (Route route : subRoutes(Start_routes, t_routes)) {
             if (End_routes.contains(route)&&
                     route.getStations().indexOf(Start_station)<route.getStations().indexOf(End_station)) {
-                message_[0] += "Go to The bus: " + route.getBus().getName() + " with route: " + route.getName()
-                        + " embark at station: " + Start + " and disembark at station: " + End + "\n";
+                message_[0] += route.getBus().getName() + "\n" + route.getName()
+                        + "\n" + Start + "\n" + End + "\n \n";
                 return true;
             }
         }
@@ -132,10 +132,8 @@ public class Person {
             for (Station station : subbed_stations) {
                 ArrayList<Station> parameter_t_stations = new ArrayList<>();
                 parameter_t_stations.addAll(t_stations);
-                String[] message_parameter = {message_[0] + "Go to The bus: " + route.getBus().getName() +
-                        " with route: " + route.getName() +
-                        " embark at station: " + Start + " and disembark at station: "
-                        + station.getName() + "\n"};
+                String[] message_parameter = {message_[0] +  route.getBus().getName() + "\n" + route.getName()
+                        + "\n" + Start + "\n" + station.getName() + "\n \n"};
                 if (findRoute(station.getName(), End, addRoute(t_routes, route), parameter_t_stations,
                         message_parameter, ammount - 1)) {
                     message_[0] = message_parameter[0];
@@ -150,7 +148,7 @@ public class Person {
 
     public static void checkRoutes(String Start, String End) {
         for (int ammount = 1; ammount <= 2*BusDAOAndroid.getBuses().size(); ammount++) {
-            message[0] = "";
+            message[0] = "BUS\nROUTE\nEMBARKING STATION\nDISEMBARKING STATION\n \n";
             if (findRoute(Start, End, new ArrayList<Route>(), new ArrayList<Station>(), message, ammount))
                 return ;
         }
