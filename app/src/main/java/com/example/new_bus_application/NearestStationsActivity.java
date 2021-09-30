@@ -1,7 +1,6 @@
 package com.example.new_bus_application;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -65,7 +64,7 @@ public class NearestStationsActivity extends AppCompatActivity {
         Location location = getLastKnownLocation();
         longitude = location.getLongitude();
         latitude = location.getLatitude();
-        nearest_stations = Person.getNearestStations(latitude, longitude);
+        nearest_stations = Person.getNearestStations(latitude,longitude);
         ArrayAdapter<Station> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item
                 , nearest_stations);
         listView.setAdapter(arrayAdapter);

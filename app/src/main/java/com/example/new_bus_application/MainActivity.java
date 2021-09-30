@@ -14,15 +14,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(!data){
+            Person.initialize();
+            data=true;
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Button user=findViewById(R.id.User);
         Button administrator=findViewById(R.id.Administrator);
-        if(!data){
-            Person.initialize();
-            data=true;
-        }
         user.setOnClickListener(view -> {
             Intent activityChangeIntent=new Intent(MainActivity.this,UserActivity.class);
             startActivity(activityChangeIntent);

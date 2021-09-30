@@ -88,6 +88,7 @@ public class Person {
             for(int j=0; j<stations.size(); j++){
                 if(!nearestStations.contains(stations.get(j))){
                     nearestStation_index = j;
+                    //distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
                     distance=distanceV2(longDistance(stations.get(j).getLongitude(),longitude),longDistance(stations.get(j).getLatitude(),latitude));
                     break;
                 }
@@ -95,6 +96,7 @@ public class Person {
             }
 
             for (int j = 0; j < stations.size(); j++) {
+                //double next_distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
                 long next_distance =distanceV2(longDistance(stations.get(j).getLongitude(),longitude),longDistance(stations.get(j).getLatitude(),latitude));
                 if (!nearestStations.contains(stations.get(j)) && distance > next_distance) {
                     distance = next_distance;
@@ -260,7 +262,7 @@ public class Person {
 
     }
     private static long distanceV2(long x,long y){
-        return x*x+y*y;
+        return (long)(x*x)+(long)(y*y);
 
     }
 }
