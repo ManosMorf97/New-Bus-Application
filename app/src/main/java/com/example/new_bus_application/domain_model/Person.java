@@ -254,13 +254,13 @@ public class Person {
         int x1Size=(x1_S.substring(x1_S.indexOf(".")+1)).length();
         int x2Size=(x2_S.substring(x2_S.indexOf(".")+1)).length();
         int max=Math.max(x1Size,x2Size);
-        long x1_L=(long)(x1*Math.pow(10,max));
-        long x2_L=(long)(x2*Math.pow(10,max));
+        long x1_L=(long)(x1*(long)Math.pow(10,max));
+        long x2_L=(long)(x2*(long)Math.pow(10,max));
         return x1_L-x2_L;
 
     }
     private static long distanceV2(long x,long y){
-        return (long)(Math.pow(x,2)+Math.pow(y,2));
+        return x*x+y*y;
 
     }
 }
