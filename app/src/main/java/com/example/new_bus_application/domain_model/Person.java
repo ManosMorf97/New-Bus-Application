@@ -84,20 +84,18 @@ public class Person {
         if(stations.size()<=3) return stations;
         for (int i = 0; i < 3; i++) {
             int nearestStation_index=-1;
-            double distance=-1;
+            long distance=-1;
             for(int j=0; j<stations.size(); j++){
                 if(!nearestStations.contains(stations.get(j))){
                     nearestStation_index = j;
-                    distance = Math.sqrt(Math.pow(stations.get(j).getLongitude() - longitude, 2) +
-                            Math.pow(stations.get(j).getLatitude() - latitude, 2));
+                    distance=distanceV2(longDistance(stations.get(j).getLongitude(),longitude),longDistance(stations.get(j).getLatitude(),latitude));
                     break;
                 }
 
             }
 
             for (int j = 0; j < stations.size(); j++) {
-                double next_distance = Math.sqrt(Math.pow(stations.get(j).getLongitude() - longitude, 2) +
-                        Math.pow(stations.get(j).getLatitude() - latitude, 2));
+                long next_distance =distanceV2(longDistance(stations.get(j).getLongitude(),longitude),longDistance(stations.get(j).getLatitude(),latitude));
                 if (!nearestStations.contains(stations.get(j)) && distance > next_distance) {
                     distance = next_distance;
                     nearestStation_index = j;
@@ -248,6 +246,21 @@ public class Person {
                 k++;
             }
         }
+
+    }
+    private static long longDistance(double x1,double x2){
+        String x1_S=""+x1;
+        String x2_S=""+x2;
+        int x1Size=(x1_S.substring(x1_S.indexOf(".")+1)).length();
+        int x2Size=(x2_S.substring(x2_S.indexOf(".")+1)).length();
+        int max=Math.max(x1Size,x2Size);
+        long x1_L=(long)(x1*Math.pow(10,max));
+        long x2_L=(long)(x2*Math.pow(10,max));
+        return x1_L-x2_L;
+
+    }
+    private static long distanceV2(long x,long y){
+        return (long)(Math.pow(x,2)+Math.pow(y,2));
 
     }
 }
