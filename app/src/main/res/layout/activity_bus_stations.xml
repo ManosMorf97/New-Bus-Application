@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#150847"
+    android:onClick="closeKeyboard"
+    tools:ignore="OnClick"
     tools:context=".BusStationsActivity">
 
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="354dp"
-        android:layout_height="104dp"
+        android:layout_width="352dp"
+        android:layout_height="123dp"
         android:layout_marginTop="56dp"
         android:text="Choose a bus from the list or type the name of it"
         android:textColor="@color/white"
@@ -66,7 +68,7 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="107dp"
+        android:layout_width="128dp"
         android:layout_height="64dp"
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"

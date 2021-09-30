@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:background="#150847"
     android:layout_height="match_parent"
+    android:onClick="closeKeyboard"
+    tools:ignore="OnClick"
     tools:context=".RouteActivity">
 
     <TextView
