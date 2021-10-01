@@ -12,8 +12,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="375dp"
-        android:layout_height="106dp"
+        android:layout_width="369dp"
+        android:layout_height="131dp"
         android:layout_marginTop="56dp"
         android:text="Choose the begining and ending station from the list or type them"
         android:textColor="@color/white"
@@ -72,16 +72,17 @@
         android:layout_height="64dp"
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="#ffa930"
         android:text="Create Route"
+
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toEndOf="@+id/stations"
         app:layout_constraintTop_toBottomOf="@+id/ending_station"
-        app:layout_constraintVertical_bias="0.971" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/ending_station"

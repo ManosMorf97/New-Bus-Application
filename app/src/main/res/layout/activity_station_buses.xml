@@ -12,8 +12,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="365dp"
-        android:layout_height="94dp"
+        android:layout_width="372dp"
+        android:layout_height="123dp"
         android:layout_marginTop="56dp"
         android:text="Choose a station from the list or type the name of it"
         android:textColor="@color/white"

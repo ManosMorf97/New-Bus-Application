@@ -32,7 +32,7 @@ public class ShowBusesActivity extends AppCompatActivity {
         Button back=findViewById(R.id.back);
         TextView textView=findViewById(R.id.textView3);
         ListView listView=findViewById(R.id.buses);
-        textView.setText("The buses of station"+ Person.getChosen_station()+" are");
+        textView.setText("The buses of station "+ Person.getChosen_station()+" are");
         ArrayList<Bus> buses=Person.getBuses(Person.getChosen_station().getName());
         ArrayAdapter<Bus> arrayAdapter=new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item
                 ,buses);
