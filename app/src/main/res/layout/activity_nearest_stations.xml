@@ -14,7 +14,7 @@
         android:layout_width="351dp"
         android:layout_height="86dp"
         android:layout_marginTop="72dp"
-        android:text="The nearest stations are"
+        android:text="The 3 nearest stations are"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
