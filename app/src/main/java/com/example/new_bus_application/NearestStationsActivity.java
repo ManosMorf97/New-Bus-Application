@@ -9,11 +9,14 @@ import android.os.Bundle;
 
 import com.example.new_bus_application.domain_model.Person;
 import com.example.new_bus_application.domain_model.Station;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 
 
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
 
 
 import android.widget.ArrayAdapter;
@@ -26,23 +29,46 @@ import java.util.List;
 
 public class NearestStationsActivity extends AppCompatActivity {
     LocationManager mLocationManager;
-
     ArrayList<Station> nearest_stations;
 
+    private Location CurrentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearest_stations);
+        //https://developer.android.com/training/location/retrieve-current
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, location -> {
+                    // Got last known location. In some rare situations this can be null.
+                    if (location != null) {
+                        CurrentLocation=location;
+                        // Logic to handle location object
 
+                    }else{
+                        CurrentLocation = getLastKnownLocation();
+                    }
+                });
+        //end
 
 
         ListView listView = findViewById(R.id.stations);
         Button back = findViewById(R.id.back);
         double latitude, longitude;
-        Location location = getLastKnownLocation();
-        longitude = location.getLongitude();
-        latitude = location.getLatitude();
+        CurrentLocation = getLastKnownLocation();
+        longitude = CurrentLocation.getLongitude();
+        latitude = CurrentLocation.getLatitude();
         nearest_stations = Person.getNearestStations(latitude,longitude);
         ArrayAdapter<Station> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item
                 , nearest_stations);
