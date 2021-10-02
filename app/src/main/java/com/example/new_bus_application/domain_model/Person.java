@@ -258,7 +258,7 @@ public class Person {
         int max=Math.max(x1Size,x2Size);
         long x1_L=(long)(x1*(long)Math.pow(10,max));
         long x2_L=(long)(x2*(long)Math.pow(10,max));
-        return x1_L-x2_L;
+        return (long)(x1_L-x2_L);
 
     }
     private static long distanceV2(long x,long y){

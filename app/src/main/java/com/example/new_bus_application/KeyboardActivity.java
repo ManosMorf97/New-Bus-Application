@@ -3,6 +3,7 @@ package com.example.new_bus_application;
 import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,5 +15,8 @@ public class KeyboardActivity extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+    public Toast makeText(String text){
+        return Toast.makeText(getApplicationContext(), text ,Toast.LENGTH_SHORT);
     }
 }

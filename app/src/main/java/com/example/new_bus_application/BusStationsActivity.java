@@ -38,9 +38,16 @@ public class BusStationsActivity extends KeyboardActivity {
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> bus_name.setText(busesList.get(i).getName()));
         show_stations.setOnClickListener(view -> {
-            Bus chosen_bus=BusDAOAndroid.getBuses().get(bus_name.getText().toString());
+            String bus_name_=bus_name.getText().toString();
+            Toast toast;
+            if(bus_name_.equals("")) {
+                toast = makeText("You forgot to add bus");
+                toast.show();
+                return;
+            }
+            Bus chosen_bus=BusDAOAndroid.getBuses().get(bus_name_);
             if(chosen_bus==null){
-                Toast toast=Toast.makeText(getApplicationContext(),
+                 toast=Toast.makeText(getApplicationContext(),
                         "The bus "+bus_name.getText().toString()+" is not on the list,See the list",Toast.LENGTH_LONG);
                 toast.show();
                 bus_name.getText().clear();

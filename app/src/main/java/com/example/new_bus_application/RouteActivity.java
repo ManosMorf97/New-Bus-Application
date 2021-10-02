@@ -104,8 +104,6 @@ public class RouteActivity extends KeyboardActivity {
         }
         return false;
     }
-    private Toast makeText(String text){
-        return Toast.makeText(getApplicationContext(), text ,Toast.LENGTH_SHORT);
-    }
+
 
 }
