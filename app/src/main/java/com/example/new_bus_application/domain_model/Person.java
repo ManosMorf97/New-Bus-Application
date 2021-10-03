@@ -10,8 +10,8 @@ import java.util.HashMap;
 public class Person {
     private static String[] message = new String[1];
     private static Station chosen_station;
-    private static Route chosen_route;
     private static Bus chosen_bus;
+    private static int max_power;
 
     public static String getMessage() {
         return message[0];
@@ -73,18 +73,23 @@ public class Person {
         if(stations.size()<=3) return stations;
         for (int i = 0; i < 3; i++) {
             int nearestStation_index=-1;
-           double distance=-1;
+            long distance=-1;
+            //double distance=-1;
             for(int j=0; j<stations.size(); j++){
                 if(!nearestStations.contains(stations.get(j))){
                     nearestStation_index = j;
-                    distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
+                    //distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
+                    double [] coordinates={stations.get(j).getLatitude(),latitude,stations.get(j).getLongitude(),longitude};
+                    distance=distanceV2(coordinates);
                     break;
                 }
 
             }
 
             for (int j = 0; j < stations.size(); j++) {
-                double next_distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
+                double [] coordinates={stations.get(j).getLatitude(),latitude,stations.get(j).getLongitude(),longitude};
+                long next_distance=distanceV2(coordinates);
+                //double next_distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
                 if (!nearestStations.contains(stations.get(j)) && distance > next_distance) {
                     distance = next_distance;
                     nearestStation_index = j;
@@ -173,7 +178,7 @@ public class Person {
         return returned;
     }
     public static void initialize(){
-        String stations_names[]={"KIFISSIA","KAT","MAROUSSI","NERATZIOTISSA","IRINI","IRAKLIO", "NEA IONIA","PEFKAKIA"
+        String [] stations_names={"KIFISSIA","KAT","MAROUSSI","NERATZIOTISSA","IRINI","IRAKLIO", "NEA IONIA","PEFKAKIA"
                 ,"PERISSOS", "ANO PATISSIA","AGHIOS ELEFTHERIOS","KATO PATISSIA","AGHIOS NIKOLAOS","ATTIKI","VICTORIA"
                 ,"OMONIA", "MONASTIRAKI","THISSIO","PETRALONA","TAVROS","KALITHEA","MOSCHATO","FALIRO","PIRAEUS"
                 ,"ANTHOUPOLI", "PERISTERI","AGHIOS ANTONIOS","SEPOLIA","LARISSA STATION","METAXOURGHIO","PANEPISTIMIO"
@@ -196,6 +201,7 @@ public class Person {
                 23.7244829,23.72707,23.7324954,23.7350346,23.7385273,23.7422375,23.744,23.7371504,23.7383798,//3
                 23.6385973,23.6382792,23.6551848,23.6652232,23.6796408,23.6919882,23.7093069,23.7444382,
                 23.7507236,23.754881,23.7615041,23.7739632,23.7835623,23.7925343,23.8034782,23.8104653,23.8189825,23.832187};
+       max_power=Math.max(Array_Max_power(latitudes),Array_Max_power(longitudes));
         for(int i=0; i<stations_names.length; i++){
             StationDAOAndroid.AddStation(stations_names[i],new Station(stations_names[i],latitudes[i],longitudes[i]));
         }
@@ -236,5 +242,35 @@ public class Person {
             }
         }
 
+    }
+    private static int Array_Max_power(double[] x){
+        int [] power=new int[x.length];
+        int max=0;
+        for(int i=0; i<x.length; i++){
+            power[i]=power(x[i]);
+            max=Math.max(max,power[i]);
+        }
+        return max;
+    }
+    private static long distanceV2(double [] coordinates){//StationLat Lat StationLongitude Longitude
+        int max=max_power;
+        for(int i=1; i<4; i=i+2){
+            max=Math.max(max,power(coordinates[i]));
+        }
+        long [] coordinates_long=new long[4];
+        for(int i=0; i<4; i++){
+            coordinates_long[i]=(long)(coordinates[i]*(long)Math.pow(max,10));
+        }
+        long sum=0;
+        for(int i=0; i<4; i=i+2){
+            long squared=coordinates_long[i+1]-coordinates_long[i];
+            squared=squared*squared;
+            sum+=squared;
+        }
+        return  sum;
+    }
+    private static int power(double number){
+        String number_S=number+"";
+        return number_S.substring(number_S.indexOf('.')+1).length();
     }
 }
