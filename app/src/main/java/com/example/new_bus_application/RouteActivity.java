@@ -62,9 +62,8 @@ public class RouteActivity extends KeyboardActivity {
             int [] colors={Color.WHITE,Color.BLACK};
             int i=0;
             for(EditText editText:editTexts){
-                String station_name=editText.getText().toString();
+                String station_name=editText.getText().toString().toUpperCase();
                 if(StationDAOAndroid.getStations().get(station_name)==null){
-
                     if(station_name.equals(("")))
                         toast=makeText("You forgot to add a field");
                     else

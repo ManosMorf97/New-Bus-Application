@@ -31,7 +31,6 @@
         android:layout_marginTop="116dp"
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/back"
-        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.006" />
@@ -57,13 +56,13 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="56dp"
         android:backgroundTint="#ff0000"
         android:text="Back"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -75,7 +74,6 @@
         android:layout_marginTop="48dp"
         android:backgroundTint="#ffa930"
         android:text="Create Route"
-
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/back"
         app:layout_constraintEnd_toEndOf="parent"
