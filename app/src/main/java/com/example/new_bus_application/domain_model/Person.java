@@ -259,7 +259,7 @@ public class Person {
         }
         long [] coordinates_long=new long[4];
         for(int i=0; i<4; i++){
-            coordinates_long[i]=(long)(coordinates[i]*(long)Math.pow(max,10));
+            coordinates_long[i]=(long)(coordinates[i]*(long)Math.pow(10,max));
         }
         long sum=0;
         for(int i=0; i<4; i=i+2){
