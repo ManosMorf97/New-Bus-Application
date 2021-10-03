@@ -13,8 +13,6 @@ public class Person {
     private static Route chosen_route;
     private static Bus chosen_bus;
 
-    private static String ending_station_name;
-
     public static String getMessage() {
         return message[0];
     }
@@ -23,25 +21,16 @@ public class Person {
         return chosen_station;
     }
 
-    public static Route getChosen_route() {
-        return chosen_route;
-    }
 
     public static Bus getChosen_bus() {
         return chosen_bus;
     }
 
-    public static void setMessage(String message) {
-        Person.message[0] = message;
-    }
 
     public static void setChosen_station(Station chosen_station) {
         Person.chosen_station = chosen_station;
     }
 
-    public static void setChosen_route(Route chosen_route) {
-        Person.chosen_route = chosen_route;
-    }
 
     public static void setChosen_bus(Bus chosen_bus) {
         Person.chosen_bus = chosen_bus;
@@ -84,20 +73,18 @@ public class Person {
         if(stations.size()<=3) return stations;
         for (int i = 0; i < 3; i++) {
             int nearestStation_index=-1;
-            long distance=-1;
+           double distance=-1;
             for(int j=0; j<stations.size(); j++){
                 if(!nearestStations.contains(stations.get(j))){
                     nearestStation_index = j;
-                    //distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
-                    distance=distanceV2(longDistance(stations.get(j).getLongitude(),longitude),longDistance(stations.get(j).getLatitude(),latitude));
+                    distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
                     break;
                 }
 
             }
 
             for (int j = 0; j < stations.size(); j++) {
-                //double next_distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
-                long next_distance =distanceV2(longDistance(stations.get(j).getLongitude(),longitude),longDistance(stations.get(j).getLatitude(),latitude));
+                double next_distance=Math.sqrt(Math.pow(stations.get(j).getLatitude()-latitude,2)+Math.pow(stations.get(j).getLongitude()-longitude,2));
                 if (!nearestStations.contains(stations.get(j)) && distance > next_distance) {
                     distance = next_distance;
                     nearestStation_index = j;
@@ -196,15 +183,15 @@ public class Person {
                 "ETHNIKI AMYNA","HOLARGOS","NOMISMATOKOPIO","AGHIA PARASKEVI","HALANDRI","DOUK. PLAKENTIAS"};
 
         double [] latitudes={38.0736817,38.065922,38.056182,38.0450788,38.0437324,38.0462627,38.0398349,38.0371452,
-                38.032728,38.0235953,38.0201134,38.011031,38.006919,37.9992951,37.9930663,37.984183,37.9760854,
-                37.9767093,37.9686198,37.9626042,37.9604041,37.9550458,37.9449872,37.9481116,
+                38.032728,38.0235953,38.0201134,38.011031/**/,38.006919,37.9992951,37.9930663,37.984183,37.9760854,
+                37.9767093,37.9686198,37.9626042,37.9604041,37.9550458,37.9449872,37.9481116,//2
                 38.0171154,38.0131616,38.0066611,38.0026465,37.9919866,37.9862737,37.9803782,37.9745068,37.9687332,
                 37.9645189,37.9569,37.9566294,37.9492026,37.940544,37.929805,37.9183,37.9030515,37.8925685,//3
                 37.96571,37.978924,37.9899328,37.9972998,37.991956,37.9878938,37.97863,37.9760182,
                 37.979287,37.987131,37.9931249,37.9931672,38.000054,38.004519,38.009274,38.0166993,38.021915,38.0245781};
         double [] longitudes={23.8061214,23.8018393,23.8027913,23.7909649,23.7805333,23.7617785,23.7510863,23.7479803,
-                23.7424813,23.7335176,23.7296698,23.7269931,23.7255223,23.7199094,23.7282005,23.7265033,23.7234369,
-                23.7185174,23.7070795,23.701346,23.6951434,23.6774801,23.6630364,23.6410834,
+                23.7424813,23.7335176,23.7296698,23.7269931/**/,23.7255223,23.7199094,23.7282005,23.7265033,23.7234369,
+                23.7185174,23.7070795,23.701346,23.6951434,23.6774801,23.6630364,23.6410834,//2
                 23.6889085,23.693313,23.6972923,23.7113494,23.7186199,23.7189533,23.7308699,23.7330764,23.727412,
                 23.7244829,23.72707,23.7324954,23.7350346,23.7385273,23.7422375,23.744,23.7371504,23.7383798,//3
                 23.6385973,23.6382792,23.6551848,23.6652232,23.6796408,23.6919882,23.7093069,23.7444382,
@@ -248,21 +235,6 @@ public class Person {
                 k++;
             }
         }
-
-    }
-    private static long longDistance(double x1,double x2){
-        String x1_S=""+x1;
-        String x2_S=""+x2;
-        int x1Size=(x1_S.substring(x1_S.indexOf(".")+1)).length();
-        int x2Size=(x2_S.substring(x2_S.indexOf(".")+1)).length();
-        int max=Math.max(x1Size,x2Size);
-        long x1_L=(long)(x1*(long)Math.pow(10,max));
-        long x2_L=(long)(x2*(long)Math.pow(10,max));
-        return (long)(x1_L-x2_L);
-
-    }
-    private static long distanceV2(long x,long y){
-        return (long)(x*x)+(long)(y*y);
 
     }
 }
