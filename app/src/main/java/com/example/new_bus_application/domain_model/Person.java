@@ -244,11 +244,9 @@ public class Person {
 
     }
     private static int Array_Max_power(double[] x){
-        int [] power=new int[x.length];
         int max=0;
         for(int i=0; i<x.length; i++){
-            power[i]=power(x[i]);
-            max=Math.max(max,power[i]);
+            max=Math.max(max,power(x[i]));
         }
         return max;
     }
@@ -271,6 +269,10 @@ public class Person {
     }
     private static int power(double number){
         String number_S=number+"";
-        return number_S.substring(number_S.indexOf('.')+1).length();
+        int index=number_S.indexOf('.');
+        if(index>-1)
+            return number_S.substring(index+1).length();
+        else
+            return 0;
     }
 }
