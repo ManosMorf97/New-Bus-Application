@@ -101,7 +101,7 @@ public class Person {
     }
 
     private static boolean findRoute(String Start, String End, ArrayList<Route> t_routes, ArrayList<Station> t_stations,
-                                    String[] message_, int ammount) {
+                                     String[] message_, int ammount) {
         ArrayList<Route> Start_routes = new ArrayList<>();
         Station Start_station = StationDAOAndroid.getStations().get(Start);
         ArrayList<Route> End_routes = new ArrayList<>();
@@ -201,7 +201,7 @@ public class Person {
                 23.7244829,23.72707,23.7324954,23.7350346,23.7385273,23.7422375,23.744,23.7371504,23.7383798,//3
                 23.6385973,23.6382792,23.6551848,23.6652232,23.6796408,23.6919882,23.7093069,23.7444382,
                 23.7507236,23.754881,23.7615041,23.7739632,23.7835623,23.7925343,23.8034782,23.8104653,23.8189825,23.832187};
-       max_power=Math.max(Array_Max_power(latitudes),Array_Max_power(longitudes));
+        max_power=Math.max(Array_Max_power(latitudes),Array_Max_power(longitudes));
         for(int i=0; i<stations_names.length; i++){
             StationDAOAndroid.AddStation(stations_names[i],new Station(stations_names[i],latitudes[i],longitudes[i]));
         }

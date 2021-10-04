@@ -18,8 +18,8 @@ public class TestPerson {
     @BeforeClass
     public static void init(){
         String [] station_names={"A","B","C","D","A2","B2","A3","B3"};
-        double [] longitudes={-0.1,1,2,3,4,5,6,7,8};
-        double [] latitudes={-0.1,1,2,3,4,5,6,7,8};
+        double [] longitudes={-0.00000001,1,2,3,4,5,6,7,8};
+        double [] latitudes= {-0.00000001,1,2,3,4,5,6,7,8};
         for(int i=0; i<8; i++)
             StationDAOAndroid.AddStation(station_names[i],new Station(station_names[i],latitudes[i],longitudes[i]));
         Route[] routes=new Route[6];
@@ -74,8 +74,9 @@ public class TestPerson {
         ArrayList<Station> stations=getNearestStations(1,1);
         Assert.assertEquals(stations.size(),3);
         String [] station_names={"B","C","A"};
-        for(int i=0; i<3; i++)
-            Assert.assertTrue(StationDAOAndroid.getStations().get(station_names[i])==stations.get(i));
+        for(int i=0; i<3; i++) {
+            Assert.assertTrue(StationDAOAndroid.getStations().get(station_names[i]) == stations.get(i));
+        }
 
     }
     @Test
