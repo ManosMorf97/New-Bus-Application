@@ -201,8 +201,8 @@ public class Person {
         for(int i=0; i<stations_names.length; i++){
             StationDAOAndroid.AddStation(stations_names[i],new Station(stations_names[i],latitudes[i],longitudes[i]));
         }
-        String [] route_names={"KIFISSIA-PIRAEUS","PIRAEUS-KIFISSIA","ANTHOUPOLI-ELLINIKO","ELLINIKO-ANTHOUPOLI",
-                "NIKAIA-DOUK. PLAKENTIAS","DOUK. PLAKENTIAS-NIKAIA"};
+        String [] route_names={"to PIRAEUS","to KIFISSIA","to ELLINIKO","to ANTHOUPOLI",
+                "to DOUK. PLAKENTIAS","to NIKAIA"};
         Route [] routes=new Route[route_names.length];
         for(int i=0; i<route_names.length; i++){
             routes[i]=new Route(route_names[i]);
