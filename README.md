@@ -1,4 +1,4 @@
-# New_Bus_Application
+# New-Bus-Application
 
 The aim of this project is to create a mobile app using Software Engineering fundamentals.
 
