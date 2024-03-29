@@ -1,4 +1,4 @@
-# New-Bus-Application
+# Subways-Application
 
 ## Demo
 The demo is [here](https://drive.google.com/file/d/1H0P_WXBpHF9mgo4hauq9geSpS4LIs4ff/view?usp=drive_link)
